@@ -88,7 +88,7 @@ NSString * const FPParserErrorDomain = @"FPParserErrorDomain";
 			*error = [xmlParser parserError];
 			if ([[*error domain] isEqualToString:NSXMLParserErrorDomain]) {
 				if ([*error code] == NSXMLParserInternalError) {
-					NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorString forKey:NSLocalizedDescriptionKey];
+					NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorString ?: @"Unknown error" forKey:NSLocalizedDescriptionKey];
 					*error = [NSError errorWithDomain:FPParserErrorDomain code:FPParserInternalError userInfo:userInfo];
 				} else {
 					// adjust the error localizedDescription to include the line/column numbers
